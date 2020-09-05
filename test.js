@@ -38,7 +38,7 @@ test("should be able to deal with imgs", () => {
   )
 })
 
-test("should be able to deal with html stuff", () => {
+test("should not deal with html stuff", () => {
   const res = runRemark("*Full emphasis* and _high stress_, <strong>some crazy html code</strong>", {
     pruneLength: 34,
   })
