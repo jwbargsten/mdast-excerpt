@@ -70,3 +70,17 @@ const App = () => {
 
 React.ReactDOM.render(<App />, document.getElementById("root"))
 ```
+
+## API
+
+You can call `excerptAst` as follows:
+
+`excerptAst(tree, { pruneLength: 1, truncate: false, omission:`…`})`
+
+The options are
+
+- `pruneLength`: max length of the excerpt
+- `truncate`: truncate on exact length (true) or stop at whole words (false)
+- `excerptSeparator`: supply an excerpt separator that is used to split the markdown
+  into excerpt and rest (this will deactivate other options)
+- `omission`: the omission text to add after the excerpt
