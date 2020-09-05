@@ -5,7 +5,7 @@ const { getConcatenatedValue, cloneTreeUntil, findLastTextNode } = require(`./ha
 // stolen from ../gatsby/packages/gatsby-transformer-remark/src/extend-node-type.js
 // canibalize https://github.com/syntax-tree/mdast-squeeze-paragraphs
 
-function getExcerptAst(node, { pruneLength = 1, truncate = false, excerptSeparator, omission = `…` }) {
+function excerptAst(node, { pruneLength = 1, truncate = false, excerptSeparator, omission = `…` }) {
   if (excerptSeparator) {
     return cloneTreeUntil(
       node,
@@ -39,4 +39,4 @@ function getExcerptAst(node, { pruneLength = 1, truncate = false, excerptSeparat
   return excerptAST
 }
 
-module.exports = getExcerptAst
+module.exports = excerptAst

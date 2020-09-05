@@ -1,9 +1,9 @@
 const remark = require("remark")
 const stringify = require("remark-stringify")
-const getExcerptAst = require(".")
+const excerptAst = require(".")
 
 // fake the plugin
-const asExcerpt = (options) => (node) => getExcerptAst(node, options || {})
+const asExcerpt = (options) => (node) => excerptAst(node, options || {})
 
 const runRemark = (md, options) =>
   remark()
