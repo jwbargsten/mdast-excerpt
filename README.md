@@ -81,8 +81,9 @@ You can call `excerptAst` as follows:
 
 The options are
 
-- `pruneLength`: max length of the excerpt
-- `truncate`: truncate on exact length (true) or stop at whole words (false)
-- `excerptSeparator`: supply an excerpt separator that is used to split the markdown
-  into excerpt and rest (this will deactivate other options)
-- `omission`: the omission text to add after the excerpt
+- `pruneLength`: max length of the excerpt (default 140)
+- `truncate`: truncate on exact length (true) or stop at whole words (default false)
+- `excerptSeparator`: supply an excerpt separator that is used to detect the excerpt. A
+  common choice would be `<!-- end -->`. If the separator is not found, `excerptAst`
+  falls back to `pruneLength` (default undefined).
+- `omission`: the omission text to add after the excerpt (default `…`)

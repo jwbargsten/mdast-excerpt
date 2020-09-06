@@ -46,7 +46,7 @@ function cloneTreeUntil(root, endCondition) {
     }
   }
   preOrderTraversal(root)
-  return clonedRoot
+  return { tree: clonedRoot, is_pruned: endConditionMet }
 }
 
 function findLastTextNode(node, textNode) {
