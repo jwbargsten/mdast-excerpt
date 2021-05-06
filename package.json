@@ -1,6 +1,6 @@
 {
   "name": "mdast-excerpt",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Build an excerpt from a markdown AST",
   "main": "index.js",
   "scripts": {
