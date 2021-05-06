@@ -9,22 +9,22 @@ const runRemark = (md, options) => remark().use(asExcerpt, options).use(stringif
 
 test("should be able to prune only full words", () => {
   const res = runRemark("*Full emphasis* and _high stress_, you guys!", { pruneLength: 3 })
-  expect(String(res)).toBe(`_…_\n`)
+  expect(String(res)).toBe(`*…*\n`)
 })
 
 test("should not prune if pruneLength not > 0", () => {
   const res = runRemark("*Full emphasis* and _high stress_, you guys!", { pruneLength: 0 })
-  expect(String(res)).toBe("_Full emphasis_ and _high stress_, you guys!\n")
+  expect(String(res)).toBe("*Full emphasis* and *high stress*, you guys!\n")
 })
 
 test("should be able to prune till first word", () => {
   const res = runRemark("*Full emphasis* and _high stress_, **you guys**!", { pruneLength: 4 })
-  expect(String(res)).toBe(`_Full…_\n`)
+  expect(String(res)).toBe(`*Full…*\n`)
 })
 
 test("should be able to prune in bold text", () => {
   const res = runRemark("*Full emphasis* and _high stress_, **you guys**!", { pruneLength: 34 })
-  expect(String(res)).toBe(`_Full emphasis_ and _high stress_, **you…**\n`)
+  expect(String(res)).toBe(`*Full emphasis* and *high stress*, **you…**\n`)
 })
 
 test("should be able to deal with imgs", () => {
@@ -35,7 +35,7 @@ test("should be able to deal with imgs", () => {
     }
   )
   expect(String(res)).toBe(
-    `_Full emphasis_ and _high stress_, **![text](https://via.placeholder.com/150)…**\n`
+    `*Full emphasis* and *high stress*, **![text](https://via.placeholder.com/150)…**\n`
   )
 })
 
@@ -44,7 +44,7 @@ test("should not deal with html stuff", () => {
     pruneLength: 34,
   })
   // We don't deal with html in markdown, use rehype-raw to parse html in markdown beforehand
-  expect(String(res).trimRight()).toBe("_Full emphasis_ and _high stress_, <strong>…")
+  expect(String(res).trimRight()).toBe("*Full emphasis* and *high stress*, <strong>…")
 })
 
 test("should handle excerpt separator correctly with html node", () => {
