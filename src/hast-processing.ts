@@ -1,4 +1,4 @@
-import type { Parent } from 'unist';
+import { Parent } from "unist"
 
 function duplicateNode(node: Parent) {
   return {
@@ -16,14 +16,17 @@ function getConcatenatedValue(node: Parent | undefined): string {
   } else if (node.children && node.children.length) {
     return (node.children as Parent[])
       .map(getConcatenatedValue)
-      .filter((value) => value)
+      .filter(value => value)
       .join(``)
   }
   return ``
 }
 
-function cloneTreeUntil(root: Parent, endCondition: ({root, nextNode}: {root: Parent | undefined, nextNode?: Parent}) => boolean): {tree: Parent, is_pruned: boolean} {
-  let clonedRoot: Parent | undefined;
+function cloneTreeUntil(
+  root: Parent,
+  endCondition: ({ root, nextNode }: { root: Parent | undefined; nextNode?: Parent }) => boolean
+): { tree: Parent; is_pruned: boolean } {
+  let clonedRoot: Parent | undefined
   let endConditionMet = false
 
   function preOrderTraversal(node: Parent) {
@@ -34,13 +37,13 @@ function cloneTreeUntil(root: Parent, endCondition: ({root, nextNode}: {root: Pa
 
     const newNode = duplicateNode(node)
     if (clonedRoot) {
-      (clonedRoot.children as Parent[]).push(newNode)
+      ;(clonedRoot.children as Parent[]).push(newNode)
     } else {
       clonedRoot = newNode
     }
 
     if (node.children) {
-      (node.children as Parent[]).forEach((child) => {
+      ;(node.children as Parent[]).forEach(child => {
         clonedRoot = newNode
         preOrderTraversal(child)
       })
@@ -56,7 +59,7 @@ function findLastTextNode(node: Parent, textNode?: Parent): Parent | undefined {
     textNode = node
   }
   if (node.children) {
-    (node.children as Parent[]).forEach((child) => {
+    ;(node.children as Parent[]).forEach(child => {
       const laterTextNode = findLastTextNode(child, textNode)
       if (laterTextNode !== textNode) {
         textNode = laterTextNode
@@ -66,8 +69,4 @@ function findLastTextNode(node: Parent, textNode?: Parent): Parent | undefined {
   return textNode
 }
 
-export {
-  getConcatenatedValue,
-  cloneTreeUntil,
-  findLastTextNode,
-}
+export { getConcatenatedValue, cloneTreeUntil, findLastTextNode }

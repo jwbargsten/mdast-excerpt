@@ -1,17 +1,28 @@
 import { toString, truncate as truncateString } from "lodash"
 import { prune } from "./prune"
 import { getConcatenatedValue, cloneTreeUntil, findLastTextNode } from "./hast-processing"
-import type { Node, Parent } from 'unist';
+import { Node, Parent } from "unist"
 
 // stolen from gatsby/packages/gatsby-transformer-remark/src/extend-node-type.js
 
-function excerptAst(node: Node, { pruneLength = 140, truncate = false, excerptSeparator, omission = `…` }: { pruneLength?: number, truncate?: boolean, excerptSeparator?: string, omission?: string}) {
+function excerptAst(
+  node: Node,
+  {
+    pruneLength = 140,
+    truncate = false,
+    excerptSeparator,
+    omission = `…`,
+  }: { pruneLength?: number; truncate?: boolean; excerptSeparator?: string; omission?: string }
+) {
   if (!(node as Parent)?.children?.length) {
     return node
   }
 
   if (excerptSeparator) {
-    const { tree, is_pruned } = cloneTreeUntil(node as Parent, ({ nextNode }) => nextNode?.value === excerptSeparator)
+    const { tree, is_pruned } = cloneTreeUntil(
+      node as Parent,
+      ({ nextNode }) => nextNode?.value === excerptSeparator
+    )
     if (is_pruned) {
       return tree
     }
@@ -29,10 +40,10 @@ function excerptAst(node: Node, { pruneLength = 140, truncate = false, excerptSe
   }
 
   const lastTextNode = findLastTextNode(excerptAST)
-  if(!lastTextNode) {
+  if (!lastTextNode) {
     return excerptAST
   }
-  const lastTextNodeValue = toString(lastTextNode.value);
+  const lastTextNodeValue = toString(lastTextNode.value)
   const amountToPruneBy = unprunedExcerpt.length - pruneLength
   const desiredLengthOfLastNode = lastTextNodeValue.length - amountToPruneBy
   if (!truncate) {
