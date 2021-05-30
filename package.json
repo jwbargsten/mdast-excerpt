@@ -1,0 +1,86 @@
+{
+  "version": "0.0.7",
+  "license": "MIT",
+  "description": "Build an excerpt from a markdown AST",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwbargsten/mdast-excerpt.git"
+  },
+  "keywords": [
+    "mdast",
+    "transform",
+    "excerpt",
+    "truncate",
+    "summary",
+    "dot-dot-dot",
+    "markdown"
+  ],
+  "bugs": {
+    "url": "https://github.com/jwbargsten/mdast-excerpt/issues"
+  },
+  "homepage": "https://github.com/jwbargsten/mdast-excerpt#readme",
+  "author": "Joachim Bargsten <jw@bargsten.org> (https://bargsten.org)",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+  "trailingComma": "es5",
+  "semi": false,
+  "singleQuote": false,
+  "printWidth": 110,
+  "endOfLine": "lf",
+  "tabWidth": 2
+  },
+  "name": "mdast-excerpt",
+  "module": "dist/mdast-excerpt.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/mdast-excerpt.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mdast-excerpt.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.11.0",
+    "@types/lodash": "^4.14.170",
+    "@types/unist": "^2.0.3",
+    "husky": "^6.0.0",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "remark-parse": "^9.0.0",
+    "remark-stringify": "^9.0.1",
+    "size-limit": "^4.11.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2",
+    "unified": "^9.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21"
+  }
+}
