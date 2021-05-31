@@ -1,5 +1,5 @@
 {
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "description": "Build an excerpt from a markdown AST",
   "repository": {
@@ -45,12 +45,12 @@
     }
   },
   "prettier": {
-  "trailingComma": "es5",
-  "semi": false,
-  "singleQuote": false,
-  "printWidth": 110,
-  "endOfLine": "lf",
-  "tabWidth": 2
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": false,
+    "printWidth": 110,
+    "endOfLine": "lf",
+    "tabWidth": 2
   },
   "name": "mdast-excerpt",
   "module": "dist/mdast-excerpt.esm.js",
