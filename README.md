@@ -1,6 +1,6 @@
 # mdast-excerpt
 
-[![Build Status](https://travis-ci.org/jwbargsten/mdast-excerpt.svg?branch=master)](https://travis-ci.org/jwbargsten/mdast-excerpt)
+![Build Status](https://github.com/jwbargsten/mdast-excerpt/actions/workflows/main.yml/badge.svg)
 
 `mdast-excerpt` allows you to get an excerpt from a markdown post. The code is
 "borrowed" from `gatsby-transformer-remark`, which makes it possible to use excerpt
