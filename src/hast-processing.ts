@@ -1,3 +1,4 @@
+import { toString } from "lodash"
 import { Parent } from "unist"
 
 function duplicateNode(node: Parent) {
@@ -11,15 +12,15 @@ function getConcatenatedValue(node: Parent | undefined): string {
   if (!node) {
     return ``
   }
-  if (node.type === `text`) {
-    return node.value as string
-  } else if (node.children && node.children.length) {
+  if (node.type === "text") {
+    return toString(node.value)
+  } else if (node.children?.length) {
     return (node.children as Parent[])
       .map(getConcatenatedValue)
       .filter(value => value)
-      .join(``)
+      .join("")
   }
-  return ``
+  return ""
 }
 
 function cloneTreeUntil(
