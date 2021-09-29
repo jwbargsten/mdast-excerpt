@@ -1,5 +1,9 @@
 import { toString } from "lodash"
-import { Parent } from "unist"
+import { Parent as UnistParent } from "unist"
+
+export interface Parent extends UnistParent {
+  value: unknown
+}
 
 function duplicateNode(node: Parent) {
   return {

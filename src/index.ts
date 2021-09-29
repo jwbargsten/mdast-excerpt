@@ -1,7 +1,7 @@
 import { toString, truncate as truncateString } from "lodash"
 import { prune } from "./prune"
-import { getConcatenatedValue, cloneTreeUntil, findLastTextNode } from "./hast-processing"
-import { Node, Parent } from "unist"
+import { getConcatenatedValue, cloneTreeUntil, findLastTextNode, Parent } from "./hast-processing"
+import { Node } from "unist"
 
 // stolen from gatsby/packages/gatsby-transformer-remark/src/extend-node-type.js
 
