@@ -1,4 +1,5 @@
-import { toString, truncate as truncateString } from "lodash"
+import toString from "lodash/toString"
+import truncateString from "lodash/truncate"
 import { prune } from "./prune"
 import { getConcatenatedValue, cloneTreeUntil, findLastTextNode, Parent } from "./hast-processing"
 import { Node } from "unist"

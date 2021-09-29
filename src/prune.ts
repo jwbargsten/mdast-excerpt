@@ -1,4 +1,4 @@
-import { toString as makeString } from "lodash"
+import makeString from "lodash/toString"
 /**
  * Ensure some object is a coerced to a string
  **/
