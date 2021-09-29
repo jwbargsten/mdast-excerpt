@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.0.9] - 2021-09-29
+
+Kick out tsdx and use rollup directly. Also added linting and formatting
+
 ## [0.0.8] - 2021-05-31
 
 - migration to typescript and tsdx
