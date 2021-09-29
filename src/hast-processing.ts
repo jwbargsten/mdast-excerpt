@@ -2,7 +2,7 @@ import { toString } from "lodash"
 import { Parent as UnistParent } from "unist"
 
 export interface Parent extends UnistParent {
-  value: unknown
+  value?: unknown
 }
 
 function duplicateNode(node: Parent) {
