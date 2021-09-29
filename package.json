@@ -30,11 +30,10 @@
     "node": ">=10"
   },
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest test",
+    "lint": "eslint src test",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
@@ -65,9 +64,13 @@
     }
   ],
   "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.5",
     "@size-limit/preset-small-lib": "^4.11.0",
     "@types/lodash": "^4.14.170",
     "@types/unist": "^2.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
     "husky": "^6.0.0",
     "remark": "^13.0.0",
     "remark-html": "^13.0.2",
