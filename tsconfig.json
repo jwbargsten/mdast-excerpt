@@ -6,7 +6,7 @@
     "importHelpers": true,
     "declaration": true,
     "outDir": "./dist",
-    "sourceMap": true,
+    "sourceMap": false,
     "rootDir": "./src",
     "strict": true,
     "noImplicitReturns": true,
