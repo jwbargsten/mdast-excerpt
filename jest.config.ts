@@ -1,16 +1,15 @@
-import type { InitialOptionsTsJest } from 'ts-jest/dist/types';
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+import type { InitialOptionsTsJest } from "ts-jest/dist/types"
 
 const config: InitialOptionsTsJest = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  preset: "ts-jest",
+  testEnvironment: "node",
   transform: {},
-  extensionsToTreatAsEsm: ['.ts'],
+  extensionsToTreatAsEsm: [".ts"],
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       useESM: true,
     },
   },
-};
+}
 
-export default config;
+export default config
