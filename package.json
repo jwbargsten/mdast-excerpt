@@ -1,11 +1,7 @@
 {
+  "name": "mdast-excerpt",
   "version": "0.0.8",
-  "license": "MIT",
   "description": "Build an excerpt from a markdown AST",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jwbargsten/mdast-excerpt.git"
-  },
   "keywords": [
     "mdast",
     "transform",
@@ -15,52 +11,39 @@
     "dot-dot-dot",
     "markdown"
   ],
+  "homepage": "https://github.com/jwbargsten/mdast-excerpt#readme",
   "bugs": {
     "url": "https://github.com/jwbargsten/mdast-excerpt/issues"
   },
-  "homepage": "https://github.com/jwbargsten/mdast-excerpt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwbargsten/mdast-excerpt.git"
+  },
+  "license": "MIT",
   "author": "Joachim Bargsten <jw@bargsten.org> (https://bargsten.org)",
   "main": "dist/index.js",
+  "module": "dist/mdast-excerpt.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
+    "analyze": "size-limit --why",
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "test": "jest test",
-    "fmt": "prettier --write test src",
-    "lint": "eslint --fix src test",
     "check-ts": "tsc --noEmit",
+    "dev": "rollup -c -w",
+    "fmt": "prettier --write .",
+    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx,.json",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "test": "jest test"
   },
-  "peerDependencies": {},
-  "prettier": {
-    "trailingComma": "es5",
-    "semi": false,
-    "singleQuote": false,
-    "printWidth": 110,
-    "endOfLine": "lf",
-    "tabWidth": 2
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21"
   },
-  "name": "mdast-excerpt",
-  "module": "dist/mdast-excerpt.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/mdast-excerpt.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/mdast-excerpt.esm.js",
-      "limit": "10 KB"
-    }
-  ],
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
     "@size-limit/preset-small-lib": "^5.0.5",
     "@types/jest": "^27.0.2",
@@ -69,12 +52,20 @@
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
     "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^14.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jest": "^24.5.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "import-sort-style-module": "^6.0.0",
     "jest": "^27.2.3",
-    "prettier": "2.4.1",
+    "prettier": "^2.4.1",
+    "prettier-plugin-import-sort": "^0.0.7",
+    "prettier-plugin-packagejson": "^2.2.13",
     "remark": "^14.0.1",
     "remark-html": "^14.0.1",
     "remark-parse": "^10.0.0",
@@ -85,8 +76,24 @@
     "typescript": "^4.4.3",
     "unified": "^10.1.0"
   },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21"
-  }
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=10"
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/mdast-excerpt.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mdast-excerpt.esm.js",
+      "limit": "10 KB"
+    }
+  ]
 }

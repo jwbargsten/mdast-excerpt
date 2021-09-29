@@ -18,7 +18,8 @@ function getConcatenatedValue(node: Parent | undefined): string {
   }
   if (node.type === "text") {
     return toString(node.value)
-  } else if (node.children?.length) {
+  }
+  if (node.children?.length) {
     return (node.children as Parent[])
       .map(getConcatenatedValue)
       .filter((value) => value)
@@ -29,7 +30,7 @@ function getConcatenatedValue(node: Parent | undefined): string {
 
 function cloneTreeUntil(
   root: Parent,
-  endCondition: ({ root, nextNode }: { root: Parent | undefined; nextNode?: Parent }) => boolean
+  endCondition: (args: { root: Parent | undefined; nextNode?: Parent }) => boolean
 ): { tree: Parent; is_pruned: boolean } {
   let clonedRoot: Parent | undefined
   let endConditionMet = false
@@ -59,7 +60,9 @@ function cloneTreeUntil(
   return { tree: clonedRoot || duplicateNode(root), is_pruned: endConditionMet }
 }
 
-function findLastTextNode(node: Parent, textNode?: Parent): Parent | undefined {
+function findLastTextNode(node: Parent, parentTextNode?: Parent): Parent | undefined {
+  let textNode = parentTextNode
+
   if (node.type === `text`) {
     textNode = node
   }

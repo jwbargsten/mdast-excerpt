@@ -1,7 +1,8 @@
 import { toString, truncate as truncateString } from "lodash"
-import { prune } from "./prune"
-import { getConcatenatedValue, cloneTreeUntil, findLastTextNode, Parent } from "./hast-processing"
 import { Node } from "unist"
+
+import { Parent, cloneTreeUntil, findLastTextNode, getConcatenatedValue } from "./hast-processing"
+import { prune } from "./prune"
 
 // stolen from gatsby/packages/gatsby-transformer-remark/src/extend-node-type.js
 
@@ -19,11 +20,11 @@ function excerptAst(
   }
 
   if (excerptSeparator) {
-    const { tree, is_pruned } = cloneTreeUntil(
+    const { tree, is_pruned: isPruned } = cloneTreeUntil(
       node as Parent,
       ({ nextNode }) => nextNode?.value === excerptSeparator
     )
-    if (is_pruned) {
+    if (isPruned) {
       return tree
     }
   } else if (!pruneLength || pruneLength < 0) {

@@ -1,22 +1,23 @@
 import { toString as makeString } from "lodash"
 /**
  * Ensure some object is a coerced to a string
- **/
+ * */
 
 function escapeRegExp(str: string): string {
   return makeString(str).replace(/([.*+?^=!:${}()|[\]/\\])/g, "\\$1")
 }
 function defaultToWhiteSpace(characters?: string): string {
-  return characters == null ? "\\s" : "[" + escapeRegExp(characters) + "]"
+  return characters == null ? "\\s" : `[${escapeRegExp(characters)}]`
 }
 
 const nativeTrimRight = String.prototype.trimRight
 
-function rtrim(str: string, characters?: string): string {
-  str = makeString(str)
+function rtrim(oldStr: string, oldCharacters?: string): string {
+  let characters = oldCharacters
+  const str = makeString(oldStr)
   if (!characters && nativeTrimRight) return nativeTrimRight.call(str)
   characters = defaultToWhiteSpace(characters)
-  return str.replace(new RegExp(characters + "+$"), "")
+  return str.replace(new RegExp(`${characters}+$`), "")
 }
 
 /**
@@ -25,10 +26,10 @@ function rtrim(str: string, characters?: string): string {
  * @author github.com/rwz
  */
 
-function prune(str: string, length: number, pruneStr: string): string {
-  str = makeString(str)
-  length = ~~length
-  pruneStr = pruneStr != null ? String(pruneStr) : "..."
+function prune(oldStr: string, oldLength: number, oldPruneStr: string): string {
+  const str = makeString(oldStr)
+  const length = ~~oldLength
+  const pruneStr = oldPruneStr != null ? String(oldPruneStr) : "..."
 
   if (str.length <= length) return str
 

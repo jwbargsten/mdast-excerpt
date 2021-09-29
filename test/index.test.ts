@@ -1,9 +1,19 @@
-import remark from "remark"
+import { Node } from "hast"
+import { remark } from "remark"
 import stringify from "remark-stringify"
+
 import excerptAst from "../src"
 
 // fake the plugin
-const asExcerpt = (options: any) => (node: any) => excerptAst(node, options || {})
+const asExcerpt =
+  (options: {
+    pruneLength?: number | undefined
+    truncate?: boolean | undefined
+    excerptSeparator?: string | undefined
+    omission?: string | undefined
+  }) =>
+  (node: Node) =>
+    excerptAst(node, options || {})
 
 const runRemark = (md: any, options: any) => remark().use(asExcerpt, options).use(stringify).processSync(md)
 
