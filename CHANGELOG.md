@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 Kick out tsdx and use rollup directly. Also added linting and formatting
 
+Also droped support for node 10.x
+
 ## [0.0.8] - 2021-05-31
 
 - migration to typescript and tsdx
