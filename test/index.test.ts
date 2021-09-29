@@ -5,11 +5,7 @@ import excerptAst from "../src"
 // fake the plugin
 const asExcerpt = (options: any) => (node: any) => excerptAst(node, options || {})
 
-const runRemark = (md: any, options: any) =>
-  remark()
-    .use(asExcerpt, options)
-    .use(stringify)
-    .processSync(md)
+const runRemark = (md: any, options: any) => remark().use(asExcerpt, options).use(stringify).processSync(md)
 
 test("should be able to prune only full words", () => {
   const res = runRemark("*Full emphasis* and _high stress_, you guys!", {
