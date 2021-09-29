@@ -28,19 +28,18 @@
     "dist",
     "src"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "analyze": "size-limit --why",
     "build": "rollup -c",
-    "check-ts": "tsc --noEmit",
     "dev": "rollup -c -w",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest test",
     "fmt": "prettier --write .",
-    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
-    "size": "size-limit",
-    "test": "jest test"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21"
+    "lint": "eslint --fix .",
+    "check-ts": "tsc --noEmit",
+    "size": "size-limit"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
@@ -77,24 +76,7 @@
     "typescript": "^4.4.3",
     "unified": "^10.1.0"
   },
-  "peerDependencies": {},
-  "engines": {
-    "node": ">=10"
-  },
-  "importSort": {
-    ".js, .jsx, .ts, .tsx": {
-      "style": "module",
-      "parser": "typescript"
-    }
-  },
-  "size-limit": [
-    {
-      "path": "dist/mdast-excerpt.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/mdast-excerpt.esm.js",
-      "limit": "10 KB"
-    }
-  ]
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
 }

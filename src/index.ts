@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 import { toString, truncate as truncateString } from "lodash"
+=======
+import toString from "lodash/toString"
+import truncateString from "lodash/truncate"
+import { prune } from "./prune"
+import { getConcatenatedValue, cloneTreeUntil, findLastTextNode, Parent } from "./hast-processing"
+>>>>>>> 94320f5727cc674f44a659c341d028644c0535fe
 import { Node } from "unist"
 
 import { Parent, cloneTreeUntil, findLastTextNode, getConcatenatedValue } from "./hast-processing"

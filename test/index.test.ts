@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import { Node } from "hast"
 import { remark } from "remark"
+=======
+import {remark} from "remark"
+>>>>>>> 94320f5727cc674f44a659c341d028644c0535fe
 import stringify from "remark-stringify"
 
 import excerptAst from "../src"
+import { Node } from 'hast'
 
 // fake the plugin
+<<<<<<< HEAD
 const asExcerpt =
   (options: {
     pruneLength?: number | undefined
@@ -14,6 +20,9 @@ const asExcerpt =
   }) =>
   (node: Node) =>
     excerptAst(node, options || {})
+=======
+const asExcerpt = (options: any) => (node: Node) => excerptAst(node, options || {})
+>>>>>>> 94320f5727cc674f44a659c341d028644c0535fe
 
 const runRemark = (md: any, options: any) => remark().use(asExcerpt, options).use(stringify).processSync(md)
 

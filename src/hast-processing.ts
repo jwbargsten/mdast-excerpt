@@ -1,4 +1,4 @@
-import { toString } from "lodash"
+import toString from "lodash/toString"
 import { Parent as UnistParent } from "unist"
 
 export interface Parent extends UnistParent {
