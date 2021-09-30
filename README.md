@@ -87,3 +87,7 @@ The options are
   common choice would be `<!-- end -->`. If the separator is not found, `excerptAst`
   falls back to `pruneLength` (default undefined).
 - `omission`: the omission text to add after the excerpt (default `…`)
+
+## Contributors
+
+* Dillon Parfitt ([DParfitt](https://github.com/DParfitt))

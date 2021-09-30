@@ -36,7 +36,7 @@
     "fmt": "prettier --write .",
     "lint": "eslint --fix .",
     "size": "size-limit",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest test"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest test"
   },
   "dependencies": {
     "lodash": "^4.17.21"
@@ -50,6 +50,7 @@
     "@types/unist": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^14.0.0",
