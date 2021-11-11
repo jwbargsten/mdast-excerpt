@@ -29,13 +29,11 @@
     "src"
   ],
   "scripts": {
-    "analyze": "size-limit --why",
     "build": "rollup -c",
     "check-ts": "tsc --noEmit",
     "dev": "rollup -c -w",
     "fmt": "prettier --write .",
     "lint": "eslint --fix .",
-    "size": "size-limit",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest test"
   },
   "dependencies": {
@@ -44,7 +42,6 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-typescript": "^8.2.5",
-    "@size-limit/preset-small-lib": "^5.0.5",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.170",
     "@types/unist": "^2.0.6",
@@ -71,7 +68,6 @@
     "remark-parse": "^10.0.0",
     "remark-stringify": "^10.0.0",
     "rollup": "^2.57.0",
-    "size-limit": "^5.0.5",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "tslib": "^2.2.0",
