@@ -1,15 +1,14 @@
 import toString from "lodash/toString"
-import { Parent as UnistParent } from "unist"
+import { Node, NodeData } from "unist"
 
-export interface Parent extends UnistParent {
+export interface Parent<ChildNode extends Node<object> = Node, TData extends object = NodeData<ChildNode>>
+  extends Node<TData> {
+  children?: ChildNode[]
   value?: unknown
 }
 
 function duplicateNode(node: Parent) {
-  return {
-    ...node,
-    children: [],
-  }
+  return node.children ? { ...node, children: [] } : { ...node }
 }
 
 function getConcatenatedValue(node: Parent | undefined): string {
@@ -43,7 +42,10 @@ function cloneTreeUntil(
 
     const newNode = duplicateNode(node)
     if (clonedRoot) {
-      ;(clonedRoot.children as Parent[]).push(newNode)
+      if (!clonedRoot.children) {
+        clonedRoot.children = []
+      }
+      clonedRoot.children.push(newNode)
     } else {
       clonedRoot = newNode
     }

@@ -1,8 +1,11 @@
 import { Node } from "hast"
 import { remark } from "remark"
+import parse from "remark-parse"
 import stringify from "remark-stringify"
+import { unified } from "unified"
 
 import excerptAst from "../src"
+import { Parent } from "../src/hast-processing"
 
 // fake the plugin
 const asExcerpt =
@@ -111,4 +114,16 @@ In quis lectus sed eros efficitur luctus. Morbi tempor, nisl eget feugiat tincid
     pruneLength: 40,
   })
   expect(String(res)).toBe(`Where oh where **is** my little pony? Lorem…\n`)
+})
+
+test("should not have children when node is a break type", () => {
+  const md = `a  
+b
+`
+  const rawAst = unified().use(parse).parse(md)
+  const ast = excerptAst(rawAst, { excerptSeparator: "...", pruneLength: 150 }) as Parent
+  const [firstChild] = (ast as Parent).children!
+  const br = (firstChild as Parent)?.children?.find((c) => c.type === "break") as Parent
+
+  expect(br.children).toBeUndefined()
 })

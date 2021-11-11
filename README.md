@@ -90,4 +90,4 @@ The options are
 
 ## Contributors
 
-* Dillon Parfitt ([DParfitt](https://github.com/DParfitt))
+- Dillon Parfitt ([DParfitt](https://github.com/DParfitt))
